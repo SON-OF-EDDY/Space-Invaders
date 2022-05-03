@@ -1,0 +1,181 @@
+<ProtectionBit>
+    canvas:
+        #Color:
+            #rgba:(0,1,0,1)
+        Rectangle:
+            source:'alien_texture_8.jpg'
+            size:self.size
+            pos:self.pos
+
+<MotherShip>
+    canvas:
+        #Color:
+            #rgba:(1,0,0,1)
+        Rectangle:
+            size:self.size
+            source:'mothership_pic_9.png'
+            pos:self.pos
+
+<Life>
+    canvas:
+        #Color:
+            #rgba:(0,1,0,1)
+        Rectangle:
+            size:self.size
+            source:'ship_5.png'
+            pos:self.pos
+
+<Explosion>
+    canvas:
+        #Color:
+            #rgba:(0,1,0,1)
+        Rectangle:
+            source:'first_stage_2.PNG'
+            size:self.size
+            pos:self.pos
+<Alien>
+    canvas:
+        Rectangle:
+            source:'alien_10.png'
+            size:self.size
+            pos:self.pos
+
+<Bullet>
+    canvas:
+        #Color:
+            #rgba:(0,1,0,1)
+        Rectangle:
+            source:'laser_2.png'
+            size:self.size
+            pos:self.pos
+
+<Missile>
+    canvas:
+        #Color:
+            #rgba:(1,1,1,1)
+        Rectangle:
+            source:'tie_laser_pic_2.PNG'
+            size:self.size
+            pos:self.pos
+
+<Ship>
+    canvas:
+        #Color:
+            #rgba:(1,1,1,1)
+        Rectangle:
+            size:self.size
+            source:'ship_5.png'
+            pos:self.pos
+
+<Game>
+    ship:my_ship
+    my_label:lives_label
+    #my_reset:reset
+
+    canvas:
+        #Color:
+            #rgba:(0,0,0,1)
+        Rectangle:
+            source:'background_4.PNG'
+            size:self.size
+            pos:self.pos
+
+    Ship:
+        id:my_ship
+        #pos:self.pos
+        pos:root.width/2-self.size[0]/2,root.height*0.1
+
+    Label:
+        id:lives_label
+        text:'LIVES:'
+        font_name:"starwars_4"
+        color:255/255, 232/255, 31/255, 1
+        size:self.texture_size
+        #(Window.width - (3*Window.width/15)-(3*spacing),Window.height - Window.width/15)
+        pos:root.width-self.size[0]-(3*root.width/15)-(3*root.width/30)-(root.width/120),root.height-self.size[1]-(root.width/120)
+        canvas.before:
+            Color:
+                rgba:(0,0,0,0)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+
+<GameScreen>:
+    name:'game'
+    Game:
+        id:my_game
+
+<SecondScreen>:
+    name:'second'
+    canvas:
+        Rectangle:
+            source:'background_4.PNG'
+            size:self.size
+            pos:self.pos
+
+    Label:
+        font_size:root.width/8
+        font_name:"starwars_4"
+        color:(255/255, 232/255, 31/255, 1)
+        text:"DEFEAT"
+        pos_hint:{'center_x':0.5,'center_y':0.75}
+
+    Button:
+        text:"RESET"
+        id:random_button
+        background_normal: ""
+        background_color: (255/255, 232/255, 31/255, 1)
+        font_size:root.width/16
+        font_name:"starwars_4"
+        color:(0,0,0,1)
+        pos_hint:{'center_x':0.5,'center_y':0.5}
+        size_hint:0.5,0.1
+        on_press:root.game_reset()
+
+    Button:
+        text:"QUIT"
+        background_normal: ""
+        background_color: (255/255, 232/255, 31/255, 1)
+        font_size:root.width/16
+        font_name:"starwars_4"
+        color:(0,0,0,1)
+        pos_hint:{'center_x':0.5,'center_y':0.25}
+        size_hint:0.5,0.1
+        on_press:app.stop()
+
+<ThirdScreen>:
+    name:'third'
+    canvas:
+        Rectangle:
+            source:'background_4.PNG'
+            size:self.size
+            pos:self.pos
+
+    Label:
+        font_size:root.width/8
+        font_name:"starwars_4"
+        color:(255/255, 232/255, 31/255, 1)
+        text:"VICTORY"
+        pos_hint:{'center_x':0.5,'center_y':0.75}
+
+    Button:
+        text:"RESET"
+        background_normal: ""
+        background_color: (255/255, 232/255, 31/255, 1)
+        font_size:root.width/16
+        font_name:"starwars_4"
+        color:(0,0,0,1)
+        pos_hint:{'center_x':0.5,'center_y':0.5}
+        size_hint:0.5,0.1
+        on_press:root.game_reset()
+
+    Button:
+        text:"QUIT"
+        background_normal: ""
+        background_color: (255/255, 232/255, 31/255, 1)
+        font_size:root.width/16
+        font_name:"starwars_4"
+        color:(0,0,0,1)
+        pos_hint:{'center_x':0.5,'center_y':0.25}
+        size_hint:0.5,0.1
+        on_press:app.stop()
